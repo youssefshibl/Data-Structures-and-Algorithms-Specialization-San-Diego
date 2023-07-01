@@ -19,17 +19,24 @@
 # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⣿⣿⣿⠿⠋⠉⠛⠋⠉⠉⠁⠀⠀⠀⠀
 # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁
 #
-# ┌─────────────────────────────────┐
-# │ 1 Algorithmic Toolbox           │
-# │ 2 week                          │
-# │ 2 get gcd number                │
-# └─────────────────────────────────┘
+# ┌─────────────────────────────────────────┐
+# │ 1 Algorithmic Toolbox                   │
+# │ 2 week                                  │
+# │ josephus                                │
+# └─────────────────────────────────────────┘
 
-def gcd(a, b):
-    if b == 0:
-        return a
-    a = a % b
-    return gcd(b, a)
 
-a, b = map(int, input().split())
-print(gcd(a, b))
+number = int(input())
+
+i = 1 ;
+m = 0 ;
+while i < number:
+     a = 2**i
+     if a > number:
+            m = i
+            break
+     i += 1   
+l = number - 2**(m-1)
+l = 2*l + 1
+
+print(l)

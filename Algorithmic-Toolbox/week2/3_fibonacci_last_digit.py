@@ -19,11 +19,11 @@
 # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⣿⣿⣿⠿⠋⠉⠛⠋⠉⠉⠁⠀⠀⠀⠀
 # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁
 #
-# ┌──────────────────────────────────────┐
-# │ 1 Algorithmic Toolbox                │
-# │ 2 week                               │
-# │ 1 get fibonacci number last digit    │
-# └──────────────────────────────────────┘
+# ┌─────────────────────────────────────────┐
+# │ 1 Algorithmic Toolbox                   │
+# │ 2 week                                  │
+# │ 3 get last digit of fibonacci number    │
+# └─────────────────────────────────────────┘
 
 def get_fibonacci_number(number):
     if(number <= 1):
