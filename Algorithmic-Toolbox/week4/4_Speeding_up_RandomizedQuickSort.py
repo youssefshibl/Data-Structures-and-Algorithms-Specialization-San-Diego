@@ -26,7 +26,7 @@
 # └──────────────────────────────────────┘
 
 
-import random
+import random 
 
 def partition3(a, l, r):
 

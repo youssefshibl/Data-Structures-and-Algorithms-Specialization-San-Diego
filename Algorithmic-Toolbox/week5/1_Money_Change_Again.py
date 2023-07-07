@@ -21,23 +21,27 @@
 #
 # ┌──────────────────────────────────────┐
 # │ 1 Algorithmic Toolbox                │
-# │ 3 week                               │
-# │ 1 Money Change                       │
+# │ 5 week                               │
+# │ 1  Money Change Again                │
 # └──────────────────────────────────────┘
 
 
-def money_change(money):
-    number_of_coins = 0
-    while money > 0 :
-        if(money >= 20):
-            money -= 20
-        elif(money >=8):
-            money -= 8
-        else :
-            money-=1
-        number_of_coins+=1            
-    return number_of_coins
+
+def money_change_again(money , conis):
+    min_num_coins = [0] + [float('inf')] * money
+    for m in range(1, money + 1):
+        for coin in coins:
+            if m >= coin:
+                num_coins = min_num_coins[m - coin] + 1
+                if num_coins < min_num_coins[m]:
+                    min_num_coins[m] = num_coins
+    return min_num_coins[money]
+
+
+
+
 
 
 money = int(input())
-print(money_change(money))
+coins = [1, 3, 4]
+print(money_change_again(money, coins))
