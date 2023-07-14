@@ -4,7 +4,7 @@
 Master Algorithmic Programming Techniques. Advance your Software Engineering or Data Science Career by Learning Algorithms through Programming and Puzzle Solving. Ace coding interviews by implementing each algorithmic challenge in this Specialization. Apply the newly-learned algorithmic techniques to real-life problems, such as analyzing a huge social network or sequencing a genome of a deadly pathogen. 👉 [( go now )](https://www.coursera.org/specializations/data-structures-algorithms)
 
 ## 📝 Table of Content
- - ### 📌 Algorithmic Toolbox [Certificate](https://coursera.org/share/e48e01afb6f0dca264831997c10909c6)
+ - ### 📌 Algorithmic Toolbox
  - ### 📌 Data Structures
  - ### 📌 Algorithms on Graphs
  - ### 📌 Algorithms on Strings
