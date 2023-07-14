@@ -22,7 +22,7 @@
 //  ┌────────────────────────┐
 //  │ 1 Algorithmic Toolbox  │
 //  │ 2 week                 │
-//  │ 1 get fibonacci number │
+//  │ 1 get gcd number       │
 //  └────────────────────────┘
 //
 const readline = require("readline");
