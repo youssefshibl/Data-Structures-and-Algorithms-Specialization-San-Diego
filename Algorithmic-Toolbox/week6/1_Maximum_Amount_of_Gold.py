@@ -21,28 +21,36 @@
 #
 # ┌──────────────────────────────────────┐
 # │ 1 Algorithmic Toolbox                │
-# │ 5 week                               │
-# │ 1  Money Change Again                │
+# │ 6 week                               │
+# │ 1 Maximum Amount of Gold             │
 # └──────────────────────────────────────┘
 
 
-
-def money_change_again(money , conis):
+def max_gold(W, bars):
+    n = len(bars)
+    # Create a table to store the maximum amount of gold that can be collected using a weight limit of w
+    # and a set of bars from the first i bars
+    table = [[0] * (W + 1) for _ in range(n + 1)]
     
-    min_num_coins = [0] + [float('inf')] * money
-    for m in range(1, money + 1):
-        for coin in coins:
-            if m >= coin:
-                num_coins = min_num_coins[m - coin] + 1
-                if num_coins < min_num_coins[m]:
-                    min_num_coins[m] = num_coins
-    return min_num_coins[money]
+    # Fill in the table using dynamic programming
+    for i in range(1, n + 1):
+        current = bars[i-1]
+        for w in range(1, W + 1):
+            table[i][w] = table[i-1][w]
+            if(current<= w):
+                value = table[i-1][w-current] + current 
+                if(value > table[i][w]):
+                    table[i][w]= value 
+    # Return the maximum amount of gold that can be collected
+    return table[n][W]
+
+L = [int(x) for x in input().split()]
+W = L[0]
+mount = L[1]
+M = [int(x) for x in input().split()][:mount]
+
+print(max_gold(W,M))
 
 
 
 
-
-
-money = int(input())
-coins = [1, 3, 4]
-print(money_change_again(money, coins))

@@ -22,27 +22,44 @@
 # ┌──────────────────────────────────────┐
 # │ 1 Algorithmic Toolbox                │
 # │ 5 week                               │
-# │ 1  Money Change Again                │
+# │ 3 Edit Distance                      │
 # └──────────────────────────────────────┘
 
 
+def Edit_Distance(word_1 ,word_2):
+  n = len(word_1)
+  m = len(word_2)
+   # array of distances (n+1 x m+1)
+  D = [[0] * (m+1) for i in range(n+1)]
 
-def money_change_again(money , conis):
-    
-    min_num_coins = [0] + [float('inf')] * money
-    for m in range(1, money + 1):
-        for coin in coins:
-            if m >= coin:
-                num_coins = min_num_coins[m - coin] + 1
-                if num_coins < min_num_coins[m]:
-                    min_num_coins[m] = num_coins
-    return min_num_coins[money]
+    # initialize zero row and column
+  for i in range(n+1):
+        D[i][0] = i
+  for j in range(m+1):
+        D[0][j] = j
+  for j in range(1, m+1):
+        for i in range(1, n+1):
+            # space to the 1st word
+            insertion = D[i][j-1] + 1
+            # space to the 2nd word
+            deletion = D[i-1][j] + 1
+            # letters match
+            match = D[i-1][j-1]
+            # letters mismatch
+            mismatch = D[i-1][j-1] + 1
+
+            # check whether there is a match
+            if word_1[i-1] == word_2[j-1]:
+                D[i][j] = min(insertion, deletion, match)
+            else:
+                D[i][j] = min(insertion, deletion, mismatch)
+  print(D)              
+  return D[n][m]        
+        
 
 
 
 
-
-
-money = int(input())
-coins = [1, 3, 4]
-print(money_change_again(money, coins))
+word_1 = str(input())
+word_2 = str(input())
+print(Edit_Distance(word_1,word_2))

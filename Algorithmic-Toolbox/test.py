@@ -1,40 +1,46 @@
+def lcs_length(x, y):
+    # Create a table to store the lengths of the longest common subsequence of x[:i] and y[:j]
+    m, n = len(x), len(y)
+    L = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    # Compute the lengths of the longest common subsequences using dynamic programming
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if x[i - 1] == y[j - 1]:
+                L[i][j] = L[i - 1][j - 1] + 1
+            else:
+                L[i][j] = max(L[i - 1][j], L[i][j - 1])
+    
+    # Return the length of the longest common subsequence
+    print(L)
+    return L[m][n]
+
+# Example usage
+x = [7 ,2 ,9, 3, 1, 5, 9, 4]
+y = [2 ,8 ,1 ,3 ,9 ,7]
+print(lcs_length(x, y))  # Output: 2 (the LCS is [2, 4])
 
 
-# Uses python3
+def max_gold(W, bars):
+    n = len(bars)
+    # Create a table to store the maximum amount of gold that can be collected using a weight limit of w
+    # and a set of bars from the first i bars
+    table = [[0] * (W + 1) for _ in range(n + 1)]
+    
+    # Fill in the table using dynamic programming
+    for i in range(1, n + 1):
+        for w in range(1, W + 1):
+            # If the current bar is too heavy to be included, skip it
+            if bars[i - 1] > w:
+                table[i][w] = table[i - 1][w]
+            else:
+                # Otherwise, take the maximum of including the current bar and not including it
+                table[i][w] = max(table[i - 1][w], table[i - 1][w - bars[i - 1]] + bars[i - 1])
+    
+    # Return the maximum amount of gold that can be collected
+    return table[n][W]
 
-
-def num_of_inversions(arr):
-    if len(arr) == 1:
-        return arr, 0
-
-    mid = len(arr) // 2
-    left_sorted, n_inv_left = num_of_inversions(arr[:mid])
-    right_sorted, n_inv_right = num_of_inversions(arr[mid:])
-    arr_sorted, n_inv_merge = num_of_inversions_merge(left_sorted, right_sorted)
-    n_inv = n_inv_left + n_inv_right + n_inv_merge
-    return arr_sorted, n_inv
-
-
-def num_of_inversions_merge(sorted_arr1, sorted_arr2):
-    sorted_arr = list()
-    n_inv, i, j = 0, 0, 0
-
-    while (i < len(sorted_arr1)) and (j < len(sorted_arr2)):
-        if sorted_arr1[i] <= sorted_arr2[j]:
-            sorted_arr.append(sorted_arr1[i])
-            i += 1
-        else:
-            sorted_arr.append(sorted_arr2[j])
-            j += 1
-            n_inv += len(sorted_arr1[i:])
-
-    sorted_arr.extend(sorted_arr1[i:])
-    sorted_arr.extend(sorted_arr2[j:])
-    return sorted_arr, n_inv
-
-
-if __name__ == '__main__':
-    n = int(input())
-    arr = list(map(int, input().split()))
-
-    print(num_of_inversions(arr)[1])
+# Example usage
+W = 10
+bars = [3, 4, 5, 8, 10]
+print(max_gold(W, bars))  # Output: 10 (the maximum amount of gold that can be collected is 10, using bars of weights 3 and 5)
